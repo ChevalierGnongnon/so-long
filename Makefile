@@ -6,13 +6,14 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/02/08 13:54:01 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/02/11 14:30:49 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft/libft.a
 
-SCRS = main.c
+SCRS = test.c \
+		main.c
 
 OBJS_SO_LONG = $(SCRS:.c=.o)
 
@@ -22,8 +23,6 @@ CC = cc
 
 CFLAGS = -Werror -Wextra -Wall
 
-RM = rm -f
-
 NAME = so_long
 
 EXEC = a.out
@@ -31,8 +30,8 @@ EXEC = a.out
 all : $(NAME)
 
 $(NAME) : $(OBJS_SO_LONG) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS_SO_LONG) $(LIBFT) -o $(NAME)
-
+	$(CC) $(CFLAGS) $(OBJS_SO_LONG) $(LIBFT) $(MAIN) -o $(NAME) 
+	
 $(LIBFT) :
 	$(MAKE) -C libft
 
@@ -43,9 +42,6 @@ clean :
 fclean : clean
 	$(RM) $(NAME)
 	$(MAKE) -C libft fclean
-
-main :
-	$(CC) $(CFLAGS) $(EXEC)
 	
 re : fclean all
 

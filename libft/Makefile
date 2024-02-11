@@ -41,53 +41,38 @@ LIBFT = ft_atoi.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		
-GNL = get_next_line_utils.c \
-	get_next_line.c 
-
-PRINTF = ft_unsigned.c \
-		 ft_char.c \
-		 ft_decimal.c \
-		 ft_getsize.c \
-		 ft_hexa.c \
-		 ft_pointer.c \
-		 ft_printf.c \
-		 ft_string.c \
-		 ft_unsigned.c 
+		get_next_line_utils.c \
+		get_next_line.c \
+		ft_unsigned.c \
+		ft_char.c \
+		ft_decimal.c \
+		ft_getsize.c \
+		ft_hexa.c \
+		ft_pointer.c \
+		ft_printf.c \
+		ft_string.c \
+		ft_unsigned.c 
 
 CC = cc
 
 OBJSLIBFT = $(LIBFT:.c=.o)
 
-OBJSGNL = $(GNL:.c=.o)
-
-OBJSPRINTF = $(PRINTF:.c=.o)
-
 NAME = libft.a
-
-RM = rm -f
-
-%o : %c
-	$(CC) $(CFLAGS) $(OBJSLIBFT)
-	$(CC) $(CFLAGS) $(OBJSGNL)
-	$(CC) $(CFLAGS) $(OBJSPRINTF)
 
 all : $(NAME)
 
-$(NAME) : $(OBJSGNL) $(OBJSLIBFT) $(OBJSPRINTF)
-		ar rcs $(NAME) $(OBJSGNL) $(OBJSLIBFT) $(OBJSPRINTF)
+%o : %c
+	$(CC) $(CFLAGS) $(OBJSLIBFT)
+
+$(NAME) : $(OBJSLIBFT)
+		ar rcs $(NAME) $(OBJSLIBFT)
 
 clean : 
-	$(RM) $(OBJSGNL) 
 	$(RM) $(OBJSLIBFT) 
-	$(RM) $(OBJSPRINTF)
 
 fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all
-
-main : all
-	cc -Werror -Wextra -Wall ft_lstnew.c
 
 .PHONY : all clean fclean re
