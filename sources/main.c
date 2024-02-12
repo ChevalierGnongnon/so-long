@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/11 16:15:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:12:05 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 		map_path = &argv[1][1]; 
 		fd = open(map_path, O_RDONLY);
 		if(fd)
-			printf("%s", map_path);
+			ft_printf("%s", map_path);
 	}
 	close(fd);
 }

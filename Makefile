@@ -6,14 +6,15 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/02/11 14:30:49 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/02/12 13:09:49 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft/libft.a
 
-SCRS = test.c \
-		main.c
+SCRS = sources/main.c \
+		sources/flood_fill.c \
+		sources/map_check.c 	
 
 OBJS_SO_LONG = $(SCRS:.c=.o)
 
@@ -45,4 +46,4 @@ fclean : clean
 	
 re : fclean all
 
-.PHONY : all clean fclean main re 
+.PHONY : all clean fclean re 
