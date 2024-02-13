@@ -13,14 +13,14 @@ typedef struct s_position
 
 typedef struct s_elements
 {
-	static int		collectibles;
-	static int		start;
-	static int		exit;
+	int		collectibles;
+	int		start;
+	int		exit;
 }	t_elements;
 
 int		ft_check_extension(char *f);
 int		ft_check_bordline(char *line);
 int		ft_check_midlines(char *line);
-t_elements	ft_get_elements(char *line);
+void	ft_get_elements(char *line, t_elements *elements);
 
 #endif

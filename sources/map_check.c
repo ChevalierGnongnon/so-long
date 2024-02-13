@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/13 17:45:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:03:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,19 @@ int	ft_check_midlines(char *line)
 	return (1);
 }
 
-t_elements	ft_get_elements(char *line)
+void	ft_get_elements(char *line, t_elements *elements)
 {
 	size_t		i;
-	t_elements	elements;
 
 	i = 0;
-	elements.start = 0;
-	elements.collectibles = 0;
-	elements.collectibles = 0;
 	while (line[i])
 	{
 		if (line[i] == 'P')
-			elements.start++;
+			elements->start++;
 		else if (line[i] == 'C')
-			elements.collectibles++;
+			elements->collectibles++;
 		else if (line[i] == 'E')
-			elements.exit++;
+			elements->exit++;
 		i++;
 	}
 }
@@ -60,12 +56,13 @@ t_elements	ft_map_check(int fd)
 	char		*line;
 	t_elements	elements;
 
-	i = 0;
 	i = ft_check_bordline(get_next_line(fd));
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	while (line)
 	{
+		ft_get_elements(line, &elements);
+		free(line);
 		line = get_next_line(fd);
-		elements = ft_get_elements(line);
 	}
 	return (elements);
 }
