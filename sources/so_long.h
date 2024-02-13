@@ -21,6 +21,6 @@ typedef struct s_elements
 int		ft_check_extension(char *f);
 int		ft_check_bordline(char *line);
 int		ft_check_midlines(char *line);
-t_elements ft_get_elements(char *line);
+t_elements	ft_get_elements(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/13 17:40:30 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:45:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ t_elements	ft_get_elements(char *line)
 
 t_elements	ft_map_check(int fd)
 {
-	size_t	i;
-	char	*line;
-	t_elements elements;
+	size_t		i;
+	char		*line;
+	t_elements	elements;
 
 	i = 0;
 	i = ft_check_bordline(get_next_line(fd));
