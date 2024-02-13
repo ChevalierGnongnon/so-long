@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/13 14:59:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:08:27 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_check_extension(char *f)
 	sze = ft_strlen(f);
 	if ((sze >= 5) && (f[sze - 1] == 'r' && f[sze - 2] == 'e'
 			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
-				return (1);
+		return (1);
 	return (0);
 }
 
