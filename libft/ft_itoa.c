@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:05:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/01/31 14:03:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:19:01 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_getllsize(long long n)
+static int	ft_getintsize(long long n)
 {
 	size_t	j;
 
@@ -39,8 +39,8 @@ char	*ft_itoa(int n)
 	long long	castn;
 
 	castn = (long long) n;
-	str = ft_calloc(ft_getllsize(castn) + 1, sizeof(char));
-	i = ft_getsize(castn) - 1;
+	str = ft_calloc(ft_getintsize(castn) + 1, sizeof(char));
+	i = ft_getintsize(castn) - 1;
 	if (!str)
 		return (NULL);
 	if (castn < 0)
