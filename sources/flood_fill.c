@@ -3,11 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chhoflac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/13 11:08:17 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:35:32 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
+/*int		ft_flood(t_position start, int target, int replace)
+{
+	
+}*/

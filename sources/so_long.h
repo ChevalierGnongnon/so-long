@@ -5,4 +5,10 @@
 # include "../libft/libft.h"
 
 
+typedef struct s_position
+{
+	int		x;
+	int 	y;
+}	t_position;
+
 #endif
