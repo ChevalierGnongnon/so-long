@@ -6,11 +6,14 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/14 10:29:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:53:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+//delete it 
+void	ft_display_info(t_elements count);
 
 int		ft_check_extension(char *f)
 {
@@ -34,8 +37,16 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = open(map_path, O_RDONLY);
-		count = ft_map_check(fd);
-		ft_printf("player : %d\ncollectibles : %d\nexit : %d\n", count.start, count.collectibles, count.exit);
+		count = ft_set_struct(fd);
+		ft_display_info(count);
 		close(fd);
 	}
+}
+
+//delete it, only for getting infos
+void	ft_display_info(t_elements count)
+{
+	ft_printf("player : %d\n", count.start);
+	ft_printf("collectibles : %d\n", count.collectibles);
+	ft_printf("exit : %d\n", count.exit);
 }
