@@ -18,9 +18,10 @@ typedef struct s_elements
 	int		exit;
 }	t_elements;
 
-int		ft_check_extension(char *f);
-int		ft_check_bordline(char *line);
-int		ft_check_midlines(char *line);
-void	ft_get_elements(char *line, t_elements *elements);
+int			ft_check_extension(char *f);
+int			ft_check_bordline(char *line);
+int			ft_check_midlines(char *line);
+void		ft_get_elements(char *line, t_elements *elements);
+t_elements	ft_map_check(int fd);
 
 #endif

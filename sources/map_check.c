@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/13 18:03:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:41:54 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,17 @@ void	ft_get_elements(char *line, t_elements *elements)
 	}
 }
 
-t_elements	ft_map_check(int fd)
+t_elements	ft_set_struct(int fd)
 {
 	size_t		i;
 	char		*line;
 	t_elements	elements;
 
-	i = ft_check_bordline(get_next_line(fd));
+	i = ft_check_bordlines(get_next_line(fd));
 	line = get_next_line(fd);
+	elements.collectibles = 0;
+	elements.exit = 0;
+	elements.start = 0;
 	while (line)
 	{
 		ft_get_elements(line, &elements);
@@ -66,5 +69,6 @@ t_elements	ft_map_check(int fd)
 	}
 	return (elements);
 }
+
 
 
