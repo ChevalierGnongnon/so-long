@@ -6,14 +6,14 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/14 13:53:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:40:21 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 //delete it 
-void	ft_display_info(t_elements count);
+//void	ft_display_info(t_elements count, int fd);
 
 int		ft_check_extension(char *f)
 {
@@ -24,6 +24,21 @@ int		ft_check_extension(char *f)
 			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
 		return (1);
 	return (0);
+}
+
+void	ft_display_info(t_elements count/*int fd*/)
+{
+	//Get numbers of collectibles
+	ft_printf("player : %d\n", count.start);
+	ft_printf("collectibles : %d\n", count.collectibles);
+	ft_printf("exit : %d\n", count.exit);
+
+	//Check map borders
+	/*if (ft_check_map(fd))
+		ft_printf("map borders ok\n");
+	else if(!ft_check_map(fd))
+		ft_printf("map borders have holes");
+		*/
 }
 
 int		main(int argc, char **argv)
@@ -38,15 +53,11 @@ int		main(int argc, char **argv)
 	{
 		fd = open(map_path, O_RDONLY);
 		count = ft_set_struct(fd);
+		close(fd);
+		fd = open(map_path, O_RDONLY);
 		ft_display_info(count);
 		close(fd);
 	}
 }
 
 //delete it, only for getting infos
-void	ft_display_info(t_elements count)
-{
-	ft_printf("player : %d\n", count.start);
-	ft_printf("collectibles : %d\n", count.collectibles);
-	ft_printf("exit : %d\n", count.exit);
-}

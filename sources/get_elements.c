@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/14 14:26:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:52:35 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ t_elements	ft_set_struct(int fd)
 	elements.collectibles = 0;
 	elements.exit = 0;
 	elements.start = 0;
+	if (ft_check_bordlines(line))
+		return (elements);
 	while (line)
 	{
+		ft_printf("%s", line);
+		if (!ft_check_midlines(line))
+			break ;
 		ft_get_elements(line, &elements);
 		free(line);
 		line = get_next_line(fd);
