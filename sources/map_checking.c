@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/14 16:54:39 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:25:35 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_check_bordlines(char *line)
 	size_t	i;
 
 	i = 0;
-	while (line[i])
+	while (line[i] != '\n')
 	{
-		if (line[i] !='1')
+		if (line[i] != '1')
 			return (0);
 		i++;
 	}
@@ -28,7 +28,12 @@ int	ft_check_bordlines(char *line)
 
 int	ft_check_midlines(char *line)
 {
-	if (line[0] != '1' && line[ft_strlen(line) - 1] != '1')
+	int size;
+
+	size = 0;
+	while (line[size] != '\n')
+		size++;
+	if (line[0] != '1' && line[size - 1] != '1')
 		return (0);
 	return (1);
 }
