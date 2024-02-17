@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/02/14 14:05:01 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/02/17 13:25:02 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ LIBFT = libft/libft.a
 SCRS = sources/flood_fill.c \
 		sources/get_elements.c \
 		sources/main.c \
-		sources/map_checking.c
+		sources/map_checking.c \
+		sources/get_map.c
 
 OBJS_SO_LONG = $(SCRS:.c=.o)
 

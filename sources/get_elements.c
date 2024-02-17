@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/14 16:52:35 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:40:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,3 @@ t_elements	ft_set_struct(int fd)
 	}
 	return (elements);
 }
-
-
-
-
