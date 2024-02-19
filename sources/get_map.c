@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/17 13:30:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:19:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char **ft_realloc(char **map, char *line)
 
 	i = 0;
 	sze = 0;
-	while (map[sze])
+	while (map && map[sze])
 		sze++;
-	newstr = (char **) malloc(sze + 2);
+	newstr = (char **) malloc(sizeof(char **) * (sze + 2));
 	while (i < sze)
 	{
 		newstr[i] = map[i]; 
@@ -38,7 +38,7 @@ int	ft_check_line(char *line)
 {
 	if (!line)
 		return (0);
-	if (line[ft_strlen(line)] == '\n')
+	if (line[ft_strlen(line) - 1] == '\n')
 		return (ft_check_midlines(line));
 	else if (line[ft_strlen(line)] == '\0')
 		return (ft_check_bordlines(line));
@@ -48,14 +48,10 @@ int	ft_check_line(char *line)
 char	**ft_stock_map(int fd)
 {
 	char	**map;
-	char	*line; 
+	char	*line;
 
 	line = get_next_line(fd);
-	map = malloc(sizeof(char **) * 2);
-	if (!map)
-		return (NULL);
-	map[0] = line;
-	map[1] = 0;
+	map = NULL;
 	while (line)
 	{
 		if (!ft_check_line(line))

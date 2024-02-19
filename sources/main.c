@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/17 15:20:22 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:14:46 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@ int		ft_check_extension(char *f)
 	return (0);
 }
 
-void	ft_display_info(t_elements count)
+void	ft_display_info(char **map, t_elements count)
 {
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s", map[i]);
+		i++;
+	}
+	ft_printf("\n----------\n");
 	ft_printf("player : %d\n", count.start);
 	ft_printf("collectibles : %d\n", count.collectibles);
 	ft_printf("exit : %d\n", count.exit);
@@ -35,28 +44,19 @@ void	ft_display_info(t_elements count)
 
 int		main(int argc, char **argv)
 {
+	char		**map;
+	char		*path;
 	int			fd;
-	char		*map_path;
 	t_elements	count;
-	char 		**map;
-	int			i;
 
-	i =0;
-	fd = 0;
-	map_path = argv[1];
 	if (argc == 2)
 	{
-		fd = open(map_path, O_RDONLY);
+		path = argv[1];
+		ft_printf("%s\n", path);
+		fd = open(path, O_RDONLY);
 		map = ft_stock_map(fd);
-		if (!map)
-			return(0);
 		count = ft_set_struct(map);
-		while (map[i])
-		{
-			ft_printf(map[i]);
-			i++;
-		}
-		ft_display_info(count);
+		ft_display_info(map, count);
 		close(fd);
 	}
 }
