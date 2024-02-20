@@ -3,6 +3,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include <string.h>
+# include <errno.h> 
 
 typedef struct s_position
 {
@@ -25,5 +27,6 @@ t_elements	ft_set_struct(char **map);
 int			ft_check_map(int fd);
 void		ft_display_info(char **map, t_elements count);
 char		**ft_stock_map(int fd);
+int			ft_check_elements(t_elements count);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/19 14:47:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:58:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,16 @@ t_elements	ft_set_struct(char **map)
 		i++;
 	}
 	return (elements);
+}
+
+int	ft_check_elements(t_elements count)
+{
+	if (count.collectibles >= 1 && count.start == 1 && count.exit == 1)
+		return (0);
+	else if (count.collectibles == 0)
+		return (1);
+	else if (count.start > 1)
+		return (2);
+	else if (count.exit > 1)
+		return (3);
 }
