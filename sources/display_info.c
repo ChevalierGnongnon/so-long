@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 15:22:03 by chhoflac         ###   ########.fr       */
+/*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
+/*   Updated: 2024/02/20 16:28:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//delete it 
-//void	ft_display_info(t_elements count, int fd);
-
-int		ft_check_extension(char *f)
-{
-	int		sze;
-
-	sze = ft_strlen(f);
-	if ((sze >= 5) && (f[sze - 1] == 'r' && f[sze - 2] == 'e'
-			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
-		return (1);
-	return (0);
-}
 
 void	ft_display_info(char **map, t_elements count, char *path)
 {
@@ -54,22 +40,4 @@ void	ft_display_info(char **map, t_elements count, char *path)
 		ft_printf("map ok");
 	else if (!ft_check_equal(map))
 		ft_printf("map not ok");
-}
-
-int		main(int argc, char **argv)
-{
-	char		**map;
-	char		*path;
-	int			fd;
-	t_elements	count;
-
-	if (argc == 2)
-	{
-		path = argv[1];
-		fd = open(path, O_RDONLY);
-		map = ft_stock_map(fd);
-		count = ft_set_struct(map);
-		ft_display_info(map, count, path);
-		close(fd);
-	}
 }
