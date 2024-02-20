@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 16:28:59 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:29:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	ft_display_info(char **map, t_elements count, char *path)
 
 	i = 0;
 	ft_printf("%s", path);
-		ft_printf("\n----------\n");
+	ft_printf("\n----------\n");
 	while (map[i])
 	{
 		ft_printf("%s", map[i]);
+		write(1, "\n", 1);
 		i++;
 	}
-	ft_printf("\n----------\n");
+	ft_printf("----------\n");
 	i = 0;
 	while (map[i])
 	{
