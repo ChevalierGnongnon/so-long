@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 17:16:39 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:57:15 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	ft_check_midlines(char *line)
 	return (1);
 }
 
-int	ft_check_equal(char **map)
+int	ft_check_shape(char **map)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (map[i + 1])
@@ -49,10 +49,7 @@ int	ft_check_equal(char **map)
 			return (0);
 		i++;
 	}
+	if (i + 1 == ft_strlen(map[i]))
+		return (0);
 	return (1);
 }
-
-/*int	ft_check_shape(char **map)
-{
-
-}*/
