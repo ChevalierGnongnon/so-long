@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 17:26:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:43:56 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,24 @@ int		ft_check_extension(char *f)
 	return (0);
 }
 
+int	ft_compare(t_elements count, t_elements count2)
+{
+	if (count.collectibles != count2.collectibles)
+		return (0);
+	if (count.start != count2.start)
+		return (0);
+	if (count.exit != count2.exit)
+		return (0);
+	return (1);
+}
+
 int		main(int argc, char **argv)
 {
 	char		**map;
 	char		*path;
 	int			fd;
 	t_elements	count;
+	t_elements	count2;
 
 	if (argc == 2)
 	{
@@ -40,6 +52,11 @@ int		main(int argc, char **argv)
 		map = ft_stock_map(fd);
 		count = ft_set_struct(map);
 		ft_display_info(map, count, path);
+		ft_start_flood(map, &count2);
+		if (ft_compare(count, count2))
+			ft_printf("path ok\n");
+		else
+			ft_printf("path not ok\n");
 		close(fd);
 	}
 }

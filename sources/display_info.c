@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 17:57:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:20:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_display_info(char **map, t_elements count, char *path)
 {
-	int	i;
+	int	i, j;
 
+	j = 0;
 	i = 0;
 	ft_printf("%s", path);
 	ft_printf("\n----------\n");
@@ -38,7 +39,14 @@ void	ft_display_info(char **map, t_elements count, char *path)
 	ft_printf("exit : %d", count.exit);
 	ft_printf("\n----------\n");
 	if (ft_check_shape(map))
-		ft_printf("SHAPE ok");
+		ft_printf("SHAPE ok\n");
 	else if (!ft_check_shape(map))
-		ft_printf("SHAPE not ok");
+		ft_printf("SHAPE not ok\n");
+	ft_printf("\n----------\n");
+	while (map[j])
+	{
+		ft_printf("%s", map[j]);
+		write(1, "\n", 1);
+		j++;
+	}
 }
