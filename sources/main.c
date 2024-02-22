@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/21 16:43:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:49:27 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ int		main(int argc, char **argv)
 	t_elements	count;
 	t_elements	count2;
 
+	count2.start = 0;
+	count2.exit = 0;
+	count2.collectibles = 0;
 	if (argc == 2)
 	{
 		path = argv[1];
 		fd = open(path, O_RDONLY);
 		map = ft_stock_map(fd);
 		count = ft_set_struct(map);
-		ft_display_info(map, count, path);
 		ft_start_flood(map, &count2);
+		ft_display_info(map, count, count2, path);
 		if (ft_compare(count, count2))
 			ft_printf("path ok\n");
 		else

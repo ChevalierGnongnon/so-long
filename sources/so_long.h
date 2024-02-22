@@ -25,7 +25,7 @@ int			ft_check_midlines(char *line);
 void		ft_get_elements(char *line, t_elements *elements);
 t_elements	ft_set_struct(char **map);
 int			ft_check_map(int fd);
-void		ft_display_info(char **map, t_elements count, char *path);
+void		ft_display_info(char **map, t_elements count, t_elements count2, char *path);
 char		**ft_stock_map(int fd);
 int			ft_check_elements(t_elements count);
 int			ft_check_shape(char **map);
