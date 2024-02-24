@@ -6,19 +6,19 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 10:18:07 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 10:48:38 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_display_info(char **map, t_elements count, t_elements count2, char *path)
+void	display_info(char **map, t_elements count, t_elements count2, char *f)
 {
 	int	i, j;
 
 	j = 0;
 	i = 0;
-	ft_printf("%s", path);
+	ft_printf("%s", f);
 	ft_printf("\n----------\n");
 	while (map[i])
 	{

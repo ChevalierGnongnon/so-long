@@ -6,14 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/22 10:49:27 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:25:48 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//delete it 
-//void	ft_display_info(t_elements count, int fd);
 
 int		ft_check_extension(char *f)
 {
@@ -54,12 +51,13 @@ int		main(int argc, char **argv)
 		fd = open(path, O_RDONLY);
 		map = ft_stock_map(fd);
 		count = ft_set_struct(map);
-		ft_start_flood(map, &count2);
-		ft_display_info(map, count, count2, path);
-		if (ft_compare(count, count2))
-			ft_printf("path ok\n");
+		if (ft_check_forbidden_char(map))
+			ft_printf("map char ok");
 		else
-			ft_printf("path not ok\n");
+			ft_printf("map char not ok");
+		ft_start_flood(map, &count2);
+		display_info(map, count, count2, path);
+	
 		close(fd);
 	}
 }
