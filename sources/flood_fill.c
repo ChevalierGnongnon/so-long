@@ -6,22 +6,22 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 10:31:03 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:10:05 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int isaccessible(t_elements *count, char element)
+int isaccessible(t_elements *count2, char element)
 {
 	if (element == '1' || element == '2')
 		return (0);
 	else if (element == 'E')
-		count->exit++;
+		count2->exit++;
 	else if (element == 'C')
-		count->collectibles++;
+		count2->collectibles++;
 	else if (element == 'P')
-		count->start++;
+		count2->start++;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 12:53:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:34:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,30 @@ int		ft_check_extension(char *f)
 	if ((sze >= 5) && (f[sze - 1] == 'r' && f[sze - 2] == 'e'
 			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
 		return (1);
+	ft_putstr_fd("Error :\n Wrong extension, please use .ber files", 2);
 	return (0);
 }
 
-int	ft_compare(t_elements count, t_elements count2)
+int	ft_compare(t_elements cnt, t_elements cnt2)
 {
-	if (count.collectibles != count2.collectibles)
+	if (cnt.collectibles != cnt2.collectibles || cnt.start != cnt2.start
+		|| cnt.exit != cnt2.exit)
+	{
+		ft_putstr_fd("Error :\n Impossible to access all items on map", 2);
 		return (0);
-	if (count.start != count2.start)
-		return (0);
-	if (count.exit != count2.exit)
-		return (0);
+	}
 	return (1);
 }
 
 int		main(int argc, char **argv)
 {
-	char		**map;
-	char		*path;
-	int			fd;
-	t_elements	count2;
+	int		fd;
+	char	**map;
 
-	count2.start = 0;
-	count2.exit = 0;
-	count2.collectibles = 0;
 	if (argc == 2)
 	{
-		path = argv[1];
-		fd = open(path, O_RDONLY);
-		map = ft_stock_map(fd);
-		if (ft_check_forbidden_char(map))
-			ft_printf("map char ok\n");
-		else if(!ft_check_forbidden_char(map))
-			ft_printf("map char not ok\n");
-		ft_start_flood(map, &count2);
+		fd = open(argv[1], O_RDONLY);
+
 		close(fd);
 	}
 }

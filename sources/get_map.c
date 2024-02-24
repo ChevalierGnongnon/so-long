@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 17:42:11 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:20:21 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char **ft_realloc(char **map, char *line)
 {
-	char	**newstr;
+	char	**newmap;
 	size_t	sze;
 	size_t	i;
 
@@ -22,16 +22,31 @@ char **ft_realloc(char **map, char *line)
 	sze = 0;
 	while (map && map[sze])
 		sze++;
-	newstr = (char **) malloc(sizeof(char **) * (sze + 2));
+	newmap = (char **) malloc(sizeof(char **) * (sze + 2));
+	if (!newmap)
+		return (NULL);
 	while (i < sze)
 	{
-		newstr[i] = map[i]; 
+		newmap[i] = map[i]; 
 		i++;
 	}
-	newstr[i] = line;
-	newstr[i + 1] = 0;
+	newmap[i] = line;
+	newmap[i + 1] = 0;
 	free(map);
-	return (newstr);
+	return (newmap);
+}
+
+char	**ft_clear(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 int	ft_check_line(char *line)
@@ -67,8 +82,10 @@ char	**ft_stock_map(int fd)
 	while (line)
 	{
 		if (!ft_check_line(line))
-			return (NULL);
+			return (ft_clear(map));
 		map = ft_realloc(map, line);
+		if (!map)
+			return (ft_clear(map));
 		line = get_next_line(fd);
 	}
 	ft_replace(map);
