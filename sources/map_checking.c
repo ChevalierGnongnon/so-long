@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 12:36:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:52:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int ft_check_forbidden_char(char **map)
 	j = 0;
 	while (map[i])
 	{
+		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'E'
-				&& map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != '\0')
+			if (!ft_strchr("10ECP", map[i][j]))
 				return (0);
 			j++;
 		}

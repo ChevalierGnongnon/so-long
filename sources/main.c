@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 12:25:48 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:53:37 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		main(int argc, char **argv)
 	char		**map;
 	char		*path;
 	int			fd;
-	t_elements	count;
 	t_elements	count2;
 
 	count2.start = 0;
@@ -50,14 +49,11 @@ int		main(int argc, char **argv)
 		path = argv[1];
 		fd = open(path, O_RDONLY);
 		map = ft_stock_map(fd);
-		count = ft_set_struct(map);
 		if (ft_check_forbidden_char(map))
-			ft_printf("map char ok");
-		else
-			ft_printf("map char not ok");
+			ft_printf("map char ok\n");
+		else if(!ft_check_forbidden_char(map))
+			ft_printf("map char not ok\n");
 		ft_start_flood(map, &count2);
-		display_info(map, count, count2, path);
-	
 		close(fd);
 	}
 }

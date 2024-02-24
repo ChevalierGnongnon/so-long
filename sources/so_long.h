@@ -24,6 +24,6 @@ char		**ft_stock_map(int fd);
 int			ft_check_elements(t_elements count);
 int			ft_check_shape(char **map);
 void		ft_start_flood(char **map, t_elements *elements);
-int ft_check_forbidden_char(char **map);
+int 		ft_check_forbidden_char(char **map);
 
 #endif

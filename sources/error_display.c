@@ -6,9 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/20 13:03:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:55:30 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	ft_display_error()
+{
+	
+}
