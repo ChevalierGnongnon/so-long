@@ -6,12 +6,6 @@
 # include <string.h>
 # include <errno.h> 
 
-typedef struct s_position
-{
-	int		x;
-	int 	y;
-}	t_position;
-
 typedef struct s_elements
 {
 	int		collectibles;

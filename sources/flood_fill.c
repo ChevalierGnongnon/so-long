@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/22 10:50:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 10:31:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ int isaccessible(t_elements *count, char element)
 	return (1);
 }
 
-void	ft_flood(char **map, int stx, int sty, t_elements *count)
+void	ft_flood(char **map, int stx, int sty, t_elements *count2)
 {
-	if (map[stx] && map[stx][sty] && isaccessible(count, map[stx][sty]))
+	if (map[stx] && map[stx][sty] && isaccessible(count2, map[stx][sty]))
 	{
 		map[stx][sty] = '2';
-		ft_flood(map, stx + 1, sty, count);
-		ft_flood(map, stx, sty + 1, count);
-		ft_flood(map, stx - 1, sty, count);
-		ft_flood(map, stx, sty - 1, count);
+		ft_flood(map, stx + 1, sty, count2);
+		ft_flood(map, stx, sty + 1, count2);
+		ft_flood(map, stx - 1, sty, count2);
+		ft_flood(map, stx, sty - 1, count2);
 	}
 	else
 		return ;
 }
 
-void ft_start_flood(char **map, t_elements *elements)
+void ft_start_flood(char **map, t_elements *count2)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ void ft_start_flood(char **map, t_elements *elements)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
-				ft_flood(map, i, j, elements);
+				ft_flood(map, i, j, count2);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/22 10:44:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 10:18:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	ft_display_info(char **map, t_elements count, t_elements count2, char *path
 		write(1, "\n", 1);
 		j++;
 	}
-
+	ft_printf("----------\n");
 	ft_printf("player : %d\n", count2.start);
 	ft_printf("collectibles : %d\n", count2.collectibles);
-	ft_printf("exit : %d", count2.exit);
+	ft_printf("exit : %d\n", count2.exit);
 }

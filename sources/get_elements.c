@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/21 16:40:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/24 10:32:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_get_elements(char *line, t_elements *elements)
+void	ft_get_elements(char *line, t_elements *count)
 {
 	size_t		i;
 
@@ -20,11 +20,11 @@ void	ft_get_elements(char *line, t_elements *elements)
 	while (line[i])
 	{
 		if (line[i] == 'P')
-			elements->start++;
+			count->start++;
 		else if (line[i] == 'C')
-			elements->collectibles++;
+			count->collectibles++;
 		else if (line[i] == 'E')
-			elements->exit++;
+			count->exit++;
 		i++;
 	}
 }
@@ -46,14 +46,9 @@ t_elements	ft_set_struct(char **map)
 	return (elements);
 }
 
-/*int	ft_check_elements(t_elements count)
+int	ft_check_elements(t_elements count)
 {
-	if (count.collectibles >= 1 && count.start == 1 && count.exit == 1)
+	if (count.start == 1 && count.collectibles >= 1 && count.exit == 1)
 		return (1);
-	else if (count.collectibles == 0)
-		return (0);
-	else if (count.start > 1)
-		return (0);
-	else if (count.exit > 1)
-		return (0);
-}*/
+	return (0);
+}
