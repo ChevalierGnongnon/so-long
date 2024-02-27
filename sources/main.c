@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 17:34:14 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:19:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,5 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 
 int		main(int argc, char **argv)
 {
-	int		fd;
-	char	**map;
 
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-
-		close(fd);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 17:10:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:26:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int isaccessible(t_elements *count2, char element)
 	return (1);
 }
 
-void	ft_flood(char **map, int stx, int sty, t_elements *count2)
+void	ft_flood(char **map, int stx, int sty, t_elements count2)
 {
-	if (map[stx] && map[stx][sty] && isaccessible(count2, map[stx][sty]))
+	if (map[stx] && map[stx][sty] && isaccessible(&count2, map[stx][sty]))
 	{
 		map[stx][sty] = '2';
 		ft_flood(map, stx + 1, sty, count2);
@@ -39,7 +39,7 @@ void	ft_flood(char **map, int stx, int sty, t_elements *count2)
 		return ;
 }
 
-void ft_start_flood(char **map, t_elements *count2)
+void	ft_start_flood(char **map, t_elements count2)
 {
 	int	i;
 	int	j;
