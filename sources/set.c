@@ -6,34 +6,86 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/27 11:31:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:25:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_setting(char *path, t_elements cnt1, t_elements cnt2)
+t_elements ft_set_cnt(void)
 {
-	int		fd;
-	char	**map;
-	char	**flooded_map;
+	t_elements cnt2;
 
-	if (!ft_check_extension(path))
-		return (0);
-	fd = open(path, O_RDONLY);
-	if (fd < 1)
-		return (0);
-	map = ft_stock_map(fd);
-	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
-		return (0);
-	cnt1 = ft_set_struct(map);
-	if (ft_check_elements(cnt1))
-		return (0);
-	flooded_map = ft_stock_map(fd);
-	ft_start_flood(flooded_map, cnt2);
-	if (!ft_compare(cnt1, cnt2))
-		return (0);
-	close(fd);
-	return (1);
+	cnt2.exit = 0;
+	cnt2.collectibles = 0;
+	cnt2.start = 0;
+	
+	return (cnt2);
 }
 
+char **ft_mapalloc(char **origin)
+{
+	int	i;
+	int	j;
+	int k;
+	char **copy;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (origin[i])
+		i++; 
+	while(origin[0][j])
+		j++;
+	copy = malloc(sizeof(char **) * i);
+	while (copy[k])
+	{
+		copy[k] = malloc(sizeof(char *) * j);
+		k++;
+	}
+	return (copy);
+}
+
+char **ft_mapcopy(char **map)
+{
+	char	**copy;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	copy = ft_mapalloc(map);
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			copy[i][j] = map[i][j];
+			j++;
+		}
+		i++;
+	}
+	return (copy);
+}
+
+char **ft_setting(t_elements cnt1, int fd)
+{
+	char	**map;
+	char	**flooded_map;
+	t_elements cnt2;
+
+	if (fd < 1)
+		return (ft_putstr_fd("wrong fd", 2),NULL);
+	map = ft_stock_map(fd);
+	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
+		return (ft_putstr_fd("wrong shape or forbidden char", 2),NULL);
+	cnt1 = ft_set_struct(map);
+	if (!ft_check_elements(cnt1))
+		return (ft_putstr_fd("no enough elements", 2), NULL);
+	cnt2 = ft_set_cnt();
+	flooded_map = ft_mapcopy(map);
+	ft_start_flood(flooded_map, cnt2);
+	if (!ft_compare(cnt1, cnt2))
+		return (ft_putstr_fd("can't reach all elements", 2), NULL);
+	return (map);
+}

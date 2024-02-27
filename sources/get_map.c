@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 17:20:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:51:05 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char **ft_realloc(char **map, char *line)
 	return (newmap);
 }
 
-char	**ft_clear(char **map)
+void	ft_clear(char **map)
 {
 	int i;
 
@@ -82,12 +82,13 @@ char	**ft_stock_map(int fd)
 	while (line)
 	{
 		if (!ft_check_line(line))
-			return (ft_clear(map));
+			return (ft_clear(map), NULL);
 		map = ft_realloc(map, line);
 		if (!map)
-			return (ft_clear(map));
+			return (ft_clear(map), NULL);
 		line = get_next_line(fd);
 	}
-	ft_replace(map);
+	if (map)
+		ft_replace(map);
 	return (map);
 }

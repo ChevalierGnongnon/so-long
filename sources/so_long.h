@@ -27,5 +27,6 @@ void		ft_start_flood(char **map, t_elements elements);
 int 		ft_check_forbidden_char(char **map);
 int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
+char		**ft_setting(t_elements cnt1, int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/27 11:19:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:38:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,23 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 
 int		main(int argc, char **argv)
 {
+	t_elements cnt1;
+	int fd;
+	char **map;
 
+	if (argc == 2)
+	{
+		cnt1.collectibles = 0;
+		cnt1.start = 0;
+		cnt1.exit = 0;
+		if (!ft_check_extension(argv[1]))
+			ft_putstr_fd("Error\nWrong extension", 2);
+		fd = open(argv[1], O_RDONLY);
+		map = ft_setting(cnt1, fd);
+		if (!map)
+			ft_putstr_fd("Error\n", 2);
+		else
+			ft_printf("map setting ok");
+		close(fd);
+	}
 }
