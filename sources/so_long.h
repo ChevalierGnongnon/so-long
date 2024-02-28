@@ -13,6 +13,12 @@ typedef struct s_elements
 	int		exit;
 }	t_elements;
 
+typedef struct s_position
+{
+	int x;
+	int y;
+}	t_pos;
+
 int			ft_check_extension(char *f);
 int			ft_check_bordlines(char *line);
 int			ft_check_midlines(char *line);

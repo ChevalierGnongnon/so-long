@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 15:57:33 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:20:36 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,40 @@ int isaccessible(t_elements *count2, char element)
 	return (1);
 }
 
-void	ft_flood(char **map, int stx, int sty, t_elements *count2)
+void	ft_flood(char **map, t_pos pos, t_elements *count2, int call)
 {
-	if (map[stx] && map[stx][sty] && isaccessible(count2, map[stx][sty]))
-	{
-		map[stx][sty] = '2';
-		ft_flood(map, stx + 1, sty, count2);
-		ft_flood(map, stx, sty + 1, count2);
-		ft_flood(map, stx - 1, sty, count2);
-		ft_flood(map, stx, sty - 1, count2);
-	}
-	else
+	if (call > 5000)
 		return ;
+	else if (map[pos.x] && map[pos.x][pos.y]
+		&& isaccessible(count2, map[pos.x][pos.y]))
+	{
+		map[pos.x][pos.y] = '2';
+		pos.x++;
+		ft_flood(map, pos, count2, call++);
+		pos.x -= 2;
+		ft_flood(map, pos, count2, call++);
+		pos.x++;
+		pos.y++;
+		ft_flood(map, pos, count2, call++);
+		pos.y -= 2;
+		ft_flood(map, pos, count2, call++);
+	}
 }
 
 void	ft_start_flood(char **map, t_elements *count2)
 {
-	int	i;
-	int	j;
+	t_pos start;
 
-	i = 0;
-	while (map[i])
+	start.x = 0;
+	while (map[start.x])
 	{
-		j = 0;
-		while (map[i][j])
+		start.y = 0;
+		while (map[start.x][start.y])
 		{
-			if (map[i][j] == 'P')
-				ft_flood(map, i, j, count2);
-			j++;
+			if (map[start.x][start.y] == 'P')
+				ft_flood(map, start, count2, 0);
+			start.y++;
 		}
-		i++;
+		start.x++;
 	}
 }
