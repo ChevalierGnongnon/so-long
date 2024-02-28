@@ -28,5 +28,6 @@ int 		ft_check_forbidden_char(char **map);
 int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
 char		**ft_setting(t_elements cnt1, int fd);
+void		ft_clear(char **map);
 
 #endif

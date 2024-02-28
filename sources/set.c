@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 15:58:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:56:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_mapalloc(char **origin)
 {
 	int		i;
 	int		j;
-	int 	k;
+	int		k;
 	char	**copy;
 
 	i = 0;
@@ -38,9 +38,13 @@ char	**ft_mapalloc(char **origin)
 	while (origin[0][j])
 		j++;
 	copy = ft_calloc(sizeof(char **), i + 1);
+	if (!copy)
+		return (ft_clear(copy), NULL);
 	while (origin[k])
 	{
 		copy[k] = ft_calloc(sizeof(char *), j + 1);
+		if (!copy[k])
+			return (ft_clear(copy), NULL);
 		k++;
 	}
 	return (copy);
@@ -70,7 +74,7 @@ char	**ft_mapcopy(char **map)
 	return (copy);
 }
 
-char **ft_setting(t_elements cnt1, int fd)
+char	**ft_setting(t_elements cnt1, int fd)
 {
 	char		**map;
 	char		**flooded_map;

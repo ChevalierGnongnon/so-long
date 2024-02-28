@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 16:31:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:56:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int		main(int argc, char **argv)
 		map = ft_setting(cnt1, fd);
 		if (!map)
 			ft_putstr_fd("Error\n", 2);
-		
+		else
+			ft_printf("map setting ok");
 		close(fd);
 	}
 }
