@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/02/27 13:49:55 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/02/28 16:05:00 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,11 +51,10 @@ $(MLX)clean:
 
 clean : $(MLX)clean
 	$(RM) $(OBJS_SO_LONG)
-	$(MAKE) -C libft clean
+	$(MAKE) -C libft fclean
 	
 fclean : clean
 	$(RM) $(NAME)
-	$(MAKE) -C libft fclean
 	
 re : fclean all
 

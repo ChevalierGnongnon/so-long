@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/27 17:25:14 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:58:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,30 @@ t_elements ft_set_cnt(void)
 	return (cnt2);
 }
 
-char **ft_mapalloc(char **origin)
+char	**ft_mapalloc(char **origin)
 {
-	int	i;
-	int	j;
-	int k;
-	char **copy;
+	int		i;
+	int		j;
+	int 	k;
+	char	**copy;
 
 	i = 0;
 	j = 0;
 	k = 0;
 	while (origin[i])
-		i++; 
-	while(origin[0][j])
+		i++;
+	while (origin[0][j])
 		j++;
-	copy = malloc(sizeof(char **) * i);
-	while (copy[k])
+	copy = ft_calloc(sizeof(char **), i + 1);
+	while (origin[k])
 	{
-		copy[k] = malloc(sizeof(char *) * j);
+		copy[k] = ft_calloc(sizeof(char *), j + 1);
 		k++;
 	}
 	return (copy);
 }
 
-char **ft_mapcopy(char **map)
+char	**ft_mapcopy(char **map)
 {
 	char	**copy;
 	size_t	i;
@@ -55,6 +55,8 @@ char **ft_mapcopy(char **map)
 	i = 0;
 	j = 0;
 	copy = ft_mapalloc(map);
+	if (!copy)
+		return (NULL);
 	while (map[i])
 	{
 		j = 0;
@@ -70,9 +72,9 @@ char **ft_mapcopy(char **map)
 
 char **ft_setting(t_elements cnt1, int fd)
 {
-	char	**map;
-	char	**flooded_map;
-	t_elements cnt2;
+	char		**map;
+	char		**flooded_map;
+	t_elements	cnt2;
 
 	if (fd < 1)
 		return (ft_putstr_fd("wrong fd", 2),NULL);
@@ -84,7 +86,7 @@ char **ft_setting(t_elements cnt1, int fd)
 		return (ft_putstr_fd("no enough elements", 2), NULL);
 	cnt2 = ft_set_cnt();
 	flooded_map = ft_mapcopy(map);
-	ft_start_flood(flooded_map, cnt2);
+	ft_start_flood(flooded_map, &cnt2);
 	if (!ft_compare(cnt1, cnt2))
 		return (ft_putstr_fd("can't reach all elements", 2), NULL);
 	return (map);
