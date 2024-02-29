@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chhoflac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
+/*   Updated: 2024/02/29 11:32:37 by chhoflac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <fcntl.h>
@@ -15,8 +27,8 @@ typedef struct s_elements
 
 typedef struct s_position
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
 }	t_pos;
 
 int			ft_check_extension(char *f);
@@ -30,7 +42,7 @@ char		**ft_stock_map(int fd);
 int			ft_check_elements(t_elements count);
 int			ft_check_shape(char **map);
 void		ft_start_flood(char **map, t_elements *elements);
-int 		ft_check_forbidden_char(char **map);
+int			ft_check_forbidden_char(char **map);
 int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
 char		**ft_setting(t_elements cnt1, int fd);

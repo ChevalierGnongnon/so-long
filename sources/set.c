@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 16:56:22 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:29:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_elements ft_set_cnt(void)
 	cnt2.exit = 0;
 	cnt2.collectibles = 0;
 	cnt2.start = 0;
-	
+
 	return (cnt2);
 }
 

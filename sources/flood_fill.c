@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 21:20:36 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:32:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int isaccessible(t_elements *count2, char element)
+int	isaccessible(t_elements *count2, char element)
 {
 	if (element == '1' || element == '2')
 		return (0);
@@ -28,7 +28,10 @@ int isaccessible(t_elements *count2, char element)
 void	ft_flood(char **map, t_pos pos, t_elements *count2, int call)
 {
 	if (call > 5000)
+	{
+		ft_putstr_fd("Error\n map too big", 2);
 		return ;
+	}
 	else if (map[pos.x] && map[pos.x][pos.y]
 		&& isaccessible(count2, map[pos.x][pos.y]))
 	{
@@ -47,7 +50,7 @@ void	ft_flood(char **map, t_pos pos, t_elements *count2, int call)
 
 void	ft_start_flood(char **map, t_elements *count2)
 {
-	t_pos start;
+	t_pos	start;
 
 	start.x = 0;
 	while (map[start.x])

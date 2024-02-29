@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/27 15:51:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:35:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char **ft_realloc(char **map, char *line)
+char	**ft_realloc(char **map, char *line)
 {
 	char	**newmap;
 	size_t	sze;
@@ -27,7 +27,7 @@ char **ft_realloc(char **map, char *line)
 		return (NULL);
 	while (i < sze)
 	{
-		newmap[i] = map[i]; 
+		newmap[i] = map[i];
 		i++;
 	}
 	newmap[i] = line;
@@ -38,7 +38,7 @@ char **ft_realloc(char **map, char *line)
 
 void	ft_clear(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])

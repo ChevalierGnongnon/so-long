@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/28 16:56:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:28:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		ft_check_extension(char *f)
+int	ft_check_extension(char *f)
 {
 	int		sze;
 
@@ -35,11 +35,11 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_elements cnt1;
-	int fd;
-	char **map;
+	t_elements	cnt1;
+	int			fd;
+	char		**map;
 
 	if (argc == 2)
 	{

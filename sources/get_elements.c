@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/24 17:19:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:33:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ int	ft_check_elements(t_elements count)
 		ft_putstr_fd("Error :\n Missing elements in map", 2);
 	return (0);
 }
-

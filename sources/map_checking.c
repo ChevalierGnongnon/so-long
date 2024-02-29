@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/27 15:31:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:29:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_check_shape(char **map)
 	return (1);
 }
 
-int ft_check_forbidden_char(char **map)
+int	ft_check_forbidden_char(char **map)
 {
 	int	i;
 	int	j;
