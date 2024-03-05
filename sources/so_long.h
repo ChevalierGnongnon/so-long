@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chhoflac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/29 11:32:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:48:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 # include <string.h>
-# include <errno.h> 
+# include <errno.h>
+# include "../MLX/include/MLX42/MLX42.h"
 
 typedef struct s_elements
 {

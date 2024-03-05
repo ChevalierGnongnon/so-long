@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/29 11:28:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:06:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,40 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+void keyboard_hook(mlx_key_data_t key_entered, void *param)
 {
-	t_elements	cnt1;
-	int			fd;
-	char		**map;
-
-	if (argc == 2)
+	ft_printf("%p", param);
+	if (key_entered.key == MLX_KEY_LEFT
+		&& key_entered.action == MLX_PRESS)
 	{
-		cnt1.collectibles = 0;
-		cnt1.start = 0;
-		cnt1.exit = 0;
-		if (!ft_check_extension(argv[1]))
-			ft_putstr_fd("Error\nWrong extension", 2);
-		fd = open(argv[1], O_RDONLY);
-		map = ft_setting(cnt1, fd);
-		if (!map)
-			ft_putstr_fd("Error\n", 2);
-		else
-			ft_printf("map setting ok");
-		close(fd);
+		ft_printf("gauche\n");
 	}
+	if (key_entered.key == MLX_KEY_RIGHT
+		&& key_entered.action == MLX_PRESS)
+	{
+		ft_printf("droite\n");
+	}
+	if (key_entered.key == MLX_KEY_UP
+		&& key_entered.action == MLX_PRESS)
+	{
+		ft_printf("haut\n");
+	}
+	if (key_entered.key == MLX_KEY_DOWN
+		&& key_entered.action == MLX_PRESS)
+	{
+		ft_printf("bas\n");
+	}
+}
+
+int	main(void)
+{
+	mlx_t *mlx;
+
+	if (!(mlx = mlx_init(720, 480, "MLX42", true)))
+		return (EXIT_FAILURE);
+
+	mlx_key_hook(mlx, &keyboard_hook, NULL);
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
 }

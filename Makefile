@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/02/28 16:05:00 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/03/04 16:12:14 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ EXEC = a.out
 all : $(NAME)
 
 $(NAME) : $(OBJS_SO_LONG) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS_SO_LONG) $(LIBFT)$(MAIN) -o $(NAME) 
+	$(CC) $(CFLAGS) -ldl -lglfw -pthread -lm  $(OBJS_SO_LONG) $(LIBFT) $(MLX) -o $(NAME) 
 	
 $(LIBFT) :
 	$(MAKE) -C libft
