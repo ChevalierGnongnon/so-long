@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/05 17:48:16 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:44:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ typedef struct s_position
 	int		y;
 }	t_pos;
 
+typedef struct param
+{
+	int nb_moves;
+}	t_param;
+
 int			ft_check_extension(char *f);
 int			ft_check_bordlines(char *line);
 int			ft_check_midlines(char *line);
@@ -48,5 +53,7 @@ int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
 char		**ft_setting(t_elements cnt1, int fd);
 void		ft_clear(char **map);
+
+//void		keyboard_hook(mlx_key_data_t key_enter, void *par, t_param mov);
 
 #endif
