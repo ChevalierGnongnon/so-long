@@ -6,11 +6,12 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/06 00:07:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:20:20 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 
 int	ft_check_extension(char *f)
 {
@@ -35,9 +36,26 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	return (1);
 }
 
+int main(void)
+{
+	mlx_t	*mlx;
+	char	**map;
+	int		fd;
+	mlx_image_t *ground;
 
+	fd = open("maps/map_ok2.ber", O_RDONLY);
+	mlx = mlx_init(128, 128, "test", true);
+	if (!mlx)
+		exit(EXIT_FAILURE);
+	map = ft_stock_map(fd);
+	ground = ft_background(map, mlx);
+	mlx_loop(mlx);
+	mlx_delete_image(mlx, ground);
+	close(fd);
+	return (EXIT_SUCCESS);
+}
 
-int	main(void)
+/*int	main(void)
 {
 	mlx_t *mlx;
 
@@ -46,4 +64,4 @@ int	main(void)
 		return (EXIT_FAILURE);
 	ft_mlx_set(mlx);
 	return (EXIT_SUCCESS);
-}
+}*/

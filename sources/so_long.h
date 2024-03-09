@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/08 13:51:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:16:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void		ft_clear(char **map);
 
 void		keyboard_hook_count(mlx_key_data_t key_enter, void *par);
 void		ft_mlx_set(mlx_t *mlx);
+mlx_image_t *ft_background(char **map, mlx_t *mlx);
 
 #endif
