@@ -6,12 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:35:41 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/11 00:49:36 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	ft_check_extension(char *f)
 {
@@ -36,13 +35,13 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	return (1);
 }
 
-int main(void)
+int	main(void)
 {
 	mlx_t		*mlx;
 	char		**map;
 	int			fd;
-	mlx_image_t *ground;
-	mlx_image_t *sup[4];
+	mlx_image_t	*ground;
+	mlx_image_t	*sup[4];
 
 	fd = open("maps/triangle.ber", O_RDONLY);
 	mlx = mlx_init(300, 300, "test", true);

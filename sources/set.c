@@ -6,20 +6,19 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:48:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/29 11:29:22 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/11 00:52:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_elements ft_set_cnt(void)
+t_elements	ft_set_cnt(void)
 {
-	t_elements cnt2;
+	t_elements	cnt2;
 
 	cnt2.exit = 0;
 	cnt2.collectibles = 0;
 	cnt2.start = 0;
-
 	return (cnt2);
 }
 
@@ -81,10 +80,10 @@ char	**ft_setting(t_elements cnt1, int fd)
 	t_elements	cnt2;
 
 	if (fd < 1)
-		return (ft_putstr_fd("wrong fd", 2),NULL);
+		return (ft_putstr_fd("wrong fd", 2), NULL);
 	map = ft_stock_map(fd);
 	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
-		return (ft_putstr_fd("wrong shape or forbidden char", 2),NULL);
+		return (ft_putstr_fd("wrong shape or forbidden char", 2), NULL);
 	cnt1 = ft_set_struct(map);
 	if (!ft_check_elements(cnt1))
 		return (ft_putstr_fd("no enough elements", 2), NULL);
