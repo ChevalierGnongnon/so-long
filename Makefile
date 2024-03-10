@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/03/06 00:00:55 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/03/11 00:38:25 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SCRS = sources/flood_fill.c \
 		sources/main.c \
 		sources/map_checking.c \
 		sources/get_map.c \
-		sources/display_info.c \
+		sources/graphisms.c \
 		sources/set.c \
 		sources/mlx_activate.c \
 		sources/keyboard_inputs.c
@@ -33,6 +33,7 @@ CFLAGS = -Werror -Wextra -Wall -g3
 NAME = so_long
 
 EXEC = a.out
+
 
 all : $(NAME)
 

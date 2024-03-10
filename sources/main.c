@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/09 15:20:20 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/11 00:35:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,22 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 
 int main(void)
 {
-	mlx_t	*mlx;
-	char	**map;
-	int		fd;
+	mlx_t		*mlx;
+	char		**map;
+	int			fd;
 	mlx_image_t *ground;
+	mlx_image_t *sup[4];
 
-	fd = open("maps/map_ok2.ber", O_RDONLY);
-	mlx = mlx_init(128, 128, "test", true);
+	fd = open("maps/triangle.ber", O_RDONLY);
+	mlx = mlx_init(300, 300, "test", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	map = ft_stock_map(fd);
 	ground = ft_background(map, mlx);
+	ft_display_elements(map, mlx, sup);
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, ground);
+	ft_clean_img(mlx, sup);
 	close(fd);
 	return (EXIT_SUCCESS);
 }
-
-/*int	main(void)
-{
-	mlx_t *mlx;
-
-	mlx = mlx_init(720, 480, "MLX42", true);
-	if (!mlx)
-		return (EXIT_FAILURE);
-	ft_mlx_set(mlx);
-	return (EXIT_SUCCESS);
-}*/
