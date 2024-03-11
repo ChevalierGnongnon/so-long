@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:49:36 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/11 10:51:40 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(void)
 	mlx_image_t	*ground;
 	mlx_image_t	*sup[4];
 
-	fd = open("maps/triangle.ber", O_RDONLY);
+	fd = open("maps/map_ok2.ber", O_RDONLY);
 	mlx = mlx_init(300, 300, "test", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
@@ -55,4 +55,4 @@ int	main(void)
 	ft_clean_img(mlx, sup);
 	close(fd);
 	return (EXIT_SUCCESS);
-}
+} 

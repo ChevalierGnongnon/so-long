@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:55:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:24:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_position
 	int		x;
 	int		y;
 }	t_pos;
+
+typedef struct s_graphisms
+{
+	mlx_image_t	*sup[4];
+	mlx_image_t	*groud;
+}	t_graphisms;
 
 int			ft_check_extension(char *f);
 int			ft_check_bordlines(char *line);
