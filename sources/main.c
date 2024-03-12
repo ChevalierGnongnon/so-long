@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 10:51:40 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:26:44 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,27 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	return (1);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
+{
+	int			fd;
+	mlx_t		*mlx;
+	t_graphics	g;
+
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		mlx = mlx_init(300, 300, "test", true);
+		if(!mlx)
+			exit(EXIT_FAILURE);
+		g = ft_graphics_set(mlx, fd);
+		mlx_loop(mlx);
+		clean_graphics(mlx, g);
+		close(fd);
+		return (EXIT_SUCCESS);
+	}
+}
+
+/*int	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
 	char		**map;
@@ -50,9 +70,6 @@ int	main(void)
 	map = ft_stock_map(fd);
 	ground = ft_background(map, mlx);
 	ft_display_elements(map, mlx, sup);
-	mlx_loop(mlx);
-	mlx_delete_image(mlx, ground);
-	ft_clean_img(mlx, sup);
-	close(fd);
+	
 	return (EXIT_SUCCESS);
-} 
+}*/

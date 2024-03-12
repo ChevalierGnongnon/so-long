@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 11:24:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:24:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct s_position
 	int		y;
 }	t_pos;
 
-typedef struct s_graphisms
+typedef struct s_graphics
 {
 	mlx_image_t	*sup[4];
-	mlx_image_t	*groud;
-}	t_graphisms;
+	mlx_image_t	*ground;
+}	t_graphics;
 
 int			ft_check_extension(char *f);
 int			ft_check_bordlines(char *line);
@@ -59,7 +59,10 @@ void		keyboard_hook_count(mlx_key_data_t key_enter, void *par);
 void		ft_mlx_set(mlx_t *mlx);
 
 mlx_image_t	*ft_background(char **map, mlx_t *mlx);
-void		ft_display_elements(char **map, mlx_t *mlx, mlx_image_t *img[4]);
+void		ft_display_elements(char **map, mlx_t *mlx, t_graphics *graphics);
 void		ft_clean_img(mlx_t *mlx, mlx_image_t **stock);
+t_graphics	ft_graphics_set(mlx_t *mlx, int fd);
+mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics);
+void		clean_graphics(mlx_t *mlx, t_graphics g);
 
 #endif

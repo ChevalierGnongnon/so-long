@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphisms.c                                        :+:      :+:    :+:   */
+/*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:58:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:03:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,23 @@ mlx_image_t	*ft_background(char **map, mlx_t *mlx)
 	return (img);
 }
 
-mlx_image_t	**ft_img_stock(mlx_t *mlx, mlx_image_t *image[4])
+mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics)
 {
 	mlx_texture_t	*texture;
 
 	texture = mlx_load_png("images/pld_1.png");
-	image[0] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[0] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/chest.png");
-	image[1] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[1] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/stump.png");
-	image[2] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[2] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/flower.png");
-	image[3] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[3] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
-	return (image);
+	return (graphics->sup);
 }
 
 void	ft_select(char c, mlx_t *mlx, mlx_image_t **stock, t_pos pos)
@@ -82,19 +82,19 @@ void	ft_clean_img(mlx_t *mlx, mlx_image_t **stock)
 	}
 }
 
-void	ft_display_elements(char **map, mlx_t *mlx, mlx_image_t *img[4])
+void	ft_display_elements(char **map, mlx_t *mlx, t_graphics *graphics)
 {
 	t_pos		pos;
 
 	pos.y = 0;
-	ft_img_stock(mlx, img);
+	ft_img_stock(mlx, graphics);
 	while (map[pos.y])
 	{
 		pos.x = 0;
 		while (map[pos.y][pos.x])
 		{
 			if (map[pos.y][pos.x] != '0')
-				ft_select(map[pos.y][pos.x], mlx, img, pos);
+				ft_select(map[pos.y][pos.x], mlx, graphics->sup, pos);
 			pos.x++;
 		}
 		pos.y++;
