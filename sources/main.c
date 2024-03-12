@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/12 21:26:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/12 23:24:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,10 @@ int	main(int argc, char **argv)
 		if(!mlx)
 			exit(EXIT_FAILURE);
 		g = ft_graphics_set(mlx, fd);
+		mlx_key_hook(mlx, &keyboard_hook_count, mlx);
 		mlx_loop(mlx);
 		clean_graphics(mlx, g);
 		close(fd);
 		return (EXIT_SUCCESS);
 	}
 }
-
-/*int	main(int argc, char **argv)
-{
-	mlx_t		*mlx;
-	char		**map;
-	int			fd;
-	mlx_image_t	*ground;
-	mlx_image_t	*sup[4];
-
-	fd = open("maps/map_ok2.ber", O_RDONLY);
-	mlx = mlx_init(300, 300, "test", true);
-	if (!mlx)
-		exit(EXIT_FAILURE);
-	map = ft_stock_map(fd);
-	ground = ft_background(map, mlx);
-	ft_display_elements(map, mlx, sup);
-	
-	return (EXIT_SUCCESS);
-}*/

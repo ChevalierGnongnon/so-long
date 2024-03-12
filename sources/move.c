@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_inputs.c                                  :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:19:19 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:57:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/12 23:44:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	keyboard_hook_count(mlx_key_data_t key_entered, void *param)
 {
 	static int	nb_moves = 0;
 
-	if (key_entered.key == MLX_KEY_LEFT
+	if (key_entered.key == MLX_KEY_A
 		&& key_entered.action == MLX_PRESS)
-		ft_printf("gauche\n");
-	if (key_entered.key == MLX_KEY_RIGHT
+		ft_move_character
+	else if (key_entered.key == MLX_KEY_D
 		&& key_entered.action == MLX_PRESS)
 		ft_printf("droite\n");
-	if (key_entered.key == MLX_KEY_UP
+	else if (key_entered.key == MLX_KEY_W
 		&& key_entered.action == MLX_PRESS)
 		ft_printf("haut\n");
-	if (key_entered.key == MLX_KEY_DOWN
+	else if (key_entered.key == MLX_KEY_S
 		&& key_entered.action == MLX_PRESS)
 		ft_printf("bas\n");
-	if (key_entered.key == MLX_KEY_ESCAPE
+	else if (key_entered.key == MLX_KEY_ESCAPE
 		&& key_entered.action == MLX_PRESS)
 		mlx_close_window(param);
 	else if (key_entered.action == MLX_PRESS)
@@ -37,3 +37,9 @@ void	keyboard_hook_count(mlx_key_data_t key_entered, void *param)
 		ft_printf("moves : %d\n", nb_moves);
 	}
 }
+
+void ft_move_character(mlx_t mlx, t_pos base, t_pos new)
+{
+
+}
+  
