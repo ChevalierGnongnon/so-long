@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/12 21:03:59 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/16 22:17:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	ft_display_elements(char **map, mlx_t *mlx, t_graphics *graphics)
 	t_pos		pos;
 
 	pos.y = 0;
-	ft_img_stock(mlx, graphics);
 	while (map[pos.y])
 	{
 		pos.x = 0;

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/16 20:16:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/16 22:21:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,23 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 	}
 	return (1);
 }
+
 void	find_player(t_game *game)
 {
 	int	px;
 	int	py;
 
 	py = 0;
-	px = 0;
 	while (game->map[py])
 	{
+		px = 0;
 		while (game->map[py][px])
 		{
 			if (game->map[py][px] == 'P')
 			{
-				game->pos_player->x = px;
-				game->pos_player->y = py;
-				break ;
+				game->pos_player.x = px;
+				game->pos_player.y = py;
+				return ;
 			}
 			px++;
 		}
@@ -59,7 +60,6 @@ void	find_player(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_graphics	g;
 	t_game		game;
 
 	if (argc == 2)
@@ -70,10 +70,11 @@ int	main(int argc, char **argv)
 		find_player(&game);
 		if (!game.mlx)
 			exit(EXIT_FAILURE);
-		g = ft_graphics_set(&game);
+		game.graphics.ground = NULL;
+		ft_graphics_set(&game);
 		mlx_key_hook(game.mlx, &keyboard_hook_count, &game);
 		mlx_loop(game.mlx);
-		clean_graphics(game.mlx, g);
+		clean_graphics(game.mlx, game.graphics);
 		close(game.fd);
 		return (EXIT_SUCCESS);
 	}

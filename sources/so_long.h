@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/16 18:28:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:49:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_graphics	graphics;
-	t_pos		*pos_player;
+	t_pos		pos_player;
 	char		**map;
 	int			fd;
 	
@@ -71,7 +71,7 @@ void		ft_mlx_set(mlx_t *mlx);
 mlx_image_t	*ft_background(char **map, mlx_t *mlx);
 void		ft_display_elements(char **map, mlx_t *mlx, t_graphics *graphics);
 void		ft_clean_img(mlx_t *mlx, mlx_image_t **stock);
-t_graphics	ft_graphics_set(t_game *game);
+void		ft_graphics_set(t_game *game);
 mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics);
 void		clean_graphics(mlx_t *mlx, t_graphics g);
 
