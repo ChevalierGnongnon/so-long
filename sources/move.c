@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:19:19 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/16 22:20:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:37:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void	keyboard_hook_count(mlx_key_data_t key_entered, void *game)
 	else if (key_entered.key == MLX_KEY_S
 		&& key_entered.action == MLX_PRESS)
 		move_down((t_game *) game);
-	else if (key_entered.action == MLX_PRESS)
+	if (key_entered.key == MLX_KEY_ESCAPE
+		&& key_entered.action == MLX_PRESS)
 	{
-		nb_moves++;
-		ft_printf("moves : %d\n", nb_moves);
+		mlx_close_window(((t_game *) game)->mlx);
+		return ;
 	}
+	ft_display_moves(key_entered, &nb_moves);
 }
