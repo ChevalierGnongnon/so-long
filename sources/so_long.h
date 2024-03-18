@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/18 15:36:53 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:51:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void		ft_clean_img(mlx_t *mlx, mlx_image_t **stock);
 void		ft_graphics_set(t_game *game);
 mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics);
 void		clean_graphics(mlx_t *mlx, t_graphics g);
+t_elements	ft_set_cnt(void);
+char	**ft_mapcopy(char **map);
 
 #endif
   
