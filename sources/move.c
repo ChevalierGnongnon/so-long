@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:19:19 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/19 16:09:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:19:27 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ static void	move_up(t_game *game, int *moves)
 	{
 		game->pos_player.y -= 1;
 		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
-		{
-			//ft_able_exit(game);
 			game->collectibles--;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'E'
+			&& game->collectibles == 0)
+		{
+			mlx_close_window(game->mlx);
+			ft_printf("Congrats you won !!!!\nMoves : %d", *moves);
+			return ;
 		}
 		game->map[game->pos_player.y + 1][game->pos_player.x] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
@@ -36,9 +40,13 @@ static void	move_down(t_game *game, int *moves)
 	{
 		game->pos_player.y += 1;
 		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
-		{
-			//ft_able_exit(game);
 			game->collectibles--;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'E'
+			&& game->collectibles == 0)
+		{
+			mlx_close_window(game->mlx);
+			ft_printf("Congrats you won !!!!\nMoves : %d", *moves);
+			return ;
 		}
 		game->map[game->pos_player.y - 1][game->pos_player.x] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
@@ -54,9 +62,13 @@ static void	move_left(t_game *game, int *moves)
 	{
 		game->pos_player.x -= 1;
 		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
-		{
-			//ft_able_exit(game);
 			game->collectibles--;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'E'
+			&& game->collectibles == 0)
+		{
+			mlx_close_window(game->mlx);
+			ft_printf("Congrats you won !!!!\nMoves : %d", *moves);
+			return ;
 		}
 		game->map[game->pos_player.y][game->pos_player.x + 1] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
@@ -72,9 +84,13 @@ static void	move_right(t_game *game, int *moves)
 	{
 		game->pos_player.x += 1;
 		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
-		{
-			//ft_able_exit(game);
 			game->collectibles--;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'E'
+			&& game->collectibles == 0)
+		{
+			mlx_close_window(game->mlx);
+			ft_printf("Congrats you won !!!! \nMoves : %d", *moves);
+			return ;
 		}
 		game->map[game->pos_player.y][game->pos_player.x - 1] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
