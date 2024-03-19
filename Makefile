@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/03/18 15:31:39 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/03/19 14:33:58 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ LIBFT = libft/libft.a
 SCRS = sources/flood_fill.c \
 		sources/get_elements.c \
 		sources/get_map.c \
-		sources/display.c \
 		sources/graphics.c  \
 		sources/main.c \
 		sources/map_checking.c \
