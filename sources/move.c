@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:19:19 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/19 14:31:15 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:09:25 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ static void	move_up(t_game *game, int *moves)
 	if (game->map[game->pos_player.y - 1][game->pos_player.x] != '1')
 	{
 		game->pos_player.y -= 1;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
+		{
+			//ft_able_exit(game);
+			game->collectibles--;
+		}
 		game->map[game->pos_player.y + 1][game->pos_player.x] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
 		ft_graphics_set(game);
 		(*moves)++;
-		ft_printf("moves : %d\n", *moves);
+		ft_printf("moves : %d Collectibles : %d\n", *moves, game->collectibles);
 	}
-	
 }
 
 static void	move_down(t_game *game, int *moves)
@@ -31,11 +35,16 @@ static void	move_down(t_game *game, int *moves)
 	if (game->map[game->pos_player.y + 1][game->pos_player.x] != '1')
 	{
 		game->pos_player.y += 1;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
+		{
+			//ft_able_exit(game);
+			game->collectibles--;
+		}
 		game->map[game->pos_player.y - 1][game->pos_player.x] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
 		ft_graphics_set(game);
 		(*moves)++;
-		ft_printf("moves : %d\n", *moves);
+		ft_printf("Moves : %d Collectibles : %d\n", *moves, game->collectibles);
 	}
 }
 
@@ -44,11 +53,16 @@ static void	move_left(t_game *game, int *moves)
 	if (game->map[game->pos_player.y][game->pos_player.x - 1] != '1')
 	{
 		game->pos_player.x -= 1;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
+		{
+			//ft_able_exit(game);
+			game->collectibles--;
+		}
 		game->map[game->pos_player.y][game->pos_player.x + 1] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
 		ft_graphics_set(game);
 		(*moves)++;
-		ft_printf("moves : %d\n", *moves);
+		ft_printf("Moves : %d Collectibles : %d\n", *moves, game->collectibles);
 	}
 }
 
@@ -57,11 +71,16 @@ static void	move_right(t_game *game, int *moves)
 	if (game->map[game->pos_player.y][game->pos_player.x + 1] != '1')
 	{
 		game->pos_player.x += 1;
+		if (game->map[game->pos_player.y][game->pos_player.x] == 'C')
+		{
+			//ft_able_exit(game);
+			game->collectibles--;
+		}
 		game->map[game->pos_player.y][game->pos_player.x - 1] = '0';
 		game->map[game->pos_player.y][game->pos_player.x] = 'P';
 		ft_graphics_set(game);
 		(*moves)++;
-		ft_printf("moves : %d\n", *moves);
+		ft_printf("moves : %d Collectibles : %d\n", *moves, game->collectibles);
 	}
 }
 

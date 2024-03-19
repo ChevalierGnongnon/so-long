@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/19 14:28:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:57:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct s_game
 	t_pos		pos_player;
 	char		**map;
 	int			fd;
-	
+	int			able_exit;
+	int			collectibles;
 }	t_game;
 
 int			ft_check_extension(char *f);
@@ -62,7 +63,7 @@ void		ft_start_flood(char **map, t_elements *elements);
 int			ft_check_forbidden_char(char **map);
 int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
-char		**ft_setting(t_elements cnt1, int fd);
+char		**ft_setting(t_elements cnt1, int fd, t_game *game);
 void		ft_clear(char **map);
 
 void		keyboard_hook_count(mlx_key_data_t key_enter, void *game);

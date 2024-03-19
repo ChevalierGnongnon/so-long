@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/18 17:02:01 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:04:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	find_player(t_game *game)
 	}
 }
 
-char	**ft_setting(t_elements cnt1, int fd)
+char	**ft_setting(t_elements cnt1, int fd, t_game *game)
 {
 	char		**map;
 	char		**flooded_map;
@@ -70,6 +70,7 @@ char	**ft_setting(t_elements cnt1, int fd)
 	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
 		return (ft_putstr_fd("wrong shape or forbidden char", 2), NULL);
 	cnt1 = ft_set_struct(map);
+	game->collectibles = cnt1.collectibles;
 	if (!ft_check_elements(cnt1))
 		return (ft_putstr_fd("no enough elements", 2), NULL);
 	cnt2 = ft_set_cnt();
@@ -87,10 +88,10 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		game.fd = open(argv[1], O_RDONLY);
-		game.mlx = mlx_init(300, 300, "test", true);
 		c1 = ft_set_cnt();
-		game.map = ft_setting(c1, game.fd);
+		game.fd = open(argv[1], O_RDONLY);
+		game.map = ft_setting(c1, game.fd, &game);
+		game.mlx = mlx_init(300, 300, "so long", true);
 		if (!game.map)
 			return (EXIT_FAILURE);
 		find_player(&game);
