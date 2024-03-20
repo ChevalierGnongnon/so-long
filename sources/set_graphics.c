@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:28:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/16 22:16:51 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:38:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_graphics_set(t_game *game)
 {
-	if (game->graphics.ground) {
+	if (game->graphics.ground)
+	{
 		mlx_delete_image(game->mlx, game->graphics.ground);
 		ft_clean_img(game->mlx, game->graphics.sup);
 	}

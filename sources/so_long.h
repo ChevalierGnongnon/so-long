@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/19 15:57:33 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:13:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_position
 
 typedef struct s_graphics
 {
-	mlx_image_t	*sup[4];
+	mlx_image_t	*sup[7];
 	mlx_image_t	*ground;
 }	t_graphics;
 
@@ -77,7 +77,8 @@ void		ft_graphics_set(t_game *game);
 mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics);
 void		clean_graphics(mlx_t *mlx, t_graphics g);
 t_elements	ft_set_cnt(void);
-char	**ft_mapcopy(char **map);
+char		**ft_mapcopy(char **map);
+void		ft_character_stock(mlx_t *mlx, t_graphics *graphics);
 
 #endif
   

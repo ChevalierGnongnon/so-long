@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/03/19 17:02:35 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/03/20 10:11:44 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SCRS = sources/flood_fill.c \
 		sources/map_checking.c \
 		sources/set_graphics.c \
 		sources/move.c \
+		sources/character.c \
 		sources/set_map.c 
 
 OBJS_SO_LONG = $(SCRS:.c=.o)
