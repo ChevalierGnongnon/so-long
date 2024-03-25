@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/29 11:33:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:38:21 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,5 @@ int	ft_check_elements(t_elements count)
 {
 	if (count.start == 1 && count.collectibles >= 1 && count.exit == 1)
 		return (1);
-	else if (count.start != 1)
-		ft_putstr_fd("Error :\n No entry or more than one", 2);
-	else if (count.exit != 1)
-		ft_putstr_fd("Error :\n No exit or more than one", 2);
-	else if (count.collectibles < 1)
-		ft_putstr_fd("Error :\n No collectibles", 2);
-	else
-		ft_putstr_fd("Error :\n Missing elements in map", 2);
 	return (0);
 }

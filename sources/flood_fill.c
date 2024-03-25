@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/11 00:48:07 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:40:50 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,21 @@ int	isaccessible(t_elements *count2, char element)
 	return (1);
 }
 
-void	ft_flood(char **map, t_pos pos, t_elements *count2, int call)
+void	ft_flood(char **map, t_pos pos, t_elements *count2)
 {
-	if (call > 5000)
-	{
-		ft_putstr_fd("Error\n map too big", 2);
-		return ;
-	}
-	else if (map[pos.x] && map[pos.x][pos.y]
+	if (map[pos.x] && map[pos.x][pos.y]
 		&& isaccessible(count2, map[pos.x][pos.y]))
 	{
 		map[pos.x][pos.y] = '2';
 		pos.x++;
-		ft_flood(map, pos, count2, call++);
+		ft_flood(map, pos, count2);
 		pos.x -= 2;
-		ft_flood(map, pos, count2, call++);
+		ft_flood(map, pos, count2);
 		pos.x++;
 		pos.y++;
-		ft_flood(map, pos, count2, call++);
+		ft_flood(map, pos, count2);
 		pos.y -= 2;
-		ft_flood(map, pos, count2, call++);
+		ft_flood(map, pos, count2);
 	}
 }
 
@@ -59,7 +54,7 @@ void	ft_start_flood(char **map, t_elements *count2)
 		while (map[start.x][start.y])
 		{
 			if (map[start.x][start.y] == 'P')
-				ft_flood(map, start, count2, 0);
+				ft_flood(map, start, count2);
 			start.y++;
 		}
 		start.x++;

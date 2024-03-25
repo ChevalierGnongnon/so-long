@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/19 16:04:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:43:15 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_check_extension(char *f)
 	if ((sze >= 5) && (f[sze - 1] == 'r' && f[sze - 2] == 'e'
 			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
 		return (1);
-	ft_putstr_fd("Error :\n Wrong extension, please use .ber files", 2);
+	else
+		ft_putstr_fd("Error :\n Wrong extension, please use .ber files", 2);
 	return (0);
 }
 
@@ -77,7 +78,7 @@ char	**ft_setting(t_elements cnt1, int fd, t_game *game)
 	flooded_map = ft_mapcopy(map);
 	ft_start_flood(flooded_map, &cnt2);
 	if (!ft_compare(cnt1, cnt2))
-		return (ft_putstr_fd("can't reach all elements", 2), NULL);
+		return (ft_putstr_fd("Error :\ncan't reach all elements", 2), NULL);
 	return (map);
 }
 
@@ -89,20 +90,23 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		c1 = ft_set_cnt();
-		game.fd = open(argv[1], O_RDONLY);
-		game.map = ft_setting(c1, game.fd, &game);
-		game.mlx = mlx_init(300, 300, "so long", true);
-		if (!game.map)
-			return (EXIT_FAILURE);
-		find_player(&game);
-		if (!game.mlx)
-			exit(EXIT_FAILURE);
-		game.graphics.ground = NULL;
-		ft_graphics_set(&game);
-		mlx_key_hook(game.mlx, &keyboard_hook_count, &game);
-		mlx_loop(game.mlx);
-		clean_graphics(game.mlx, game.graphics);
-		close(game.fd);
-		return (EXIT_SUCCESS);
+		if (ft_check_extension(argv[1]))
+		{
+			game.fd = open(argv[1], O_RDONLY);
+			game.map = ft_setting(c1, game.fd, &game);
+			game.mlx = mlx_init(300, 300, "so long", true);
+			if (!game.map)
+				return (EXIT_FAILURE);
+			find_player(&game);
+			if (!game.mlx)
+				exit(EXIT_FAILURE);
+			game.graphics.ground = NULL;
+			ft_graphics_set(&game);
+			mlx_key_hook(game.mlx, &keyboard_hook_count, &game);
+			mlx_loop(game.mlx);
+			clean_graphics(game.mlx, game.graphics);
+			close(game.fd);
+			return (EXIT_SUCCESS);
+		}
 	}
 }
