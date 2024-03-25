@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/25 16:55:46 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:02:12 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_game
 	t_graphics	graphics;
 	t_pos		pos_player;
 	char		**map;
+	int			s_x;
+	int			s_y;
 	int			fd;
 	int			able_exit;
 	int			collectibles;
