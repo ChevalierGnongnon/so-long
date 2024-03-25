@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:32:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/20 10:57:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:55:46 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			ft_compare(t_elements cnt, t_elements cnt2);
 int			ft_check_everything(int fd);
 char		**ft_setting(t_elements cnt1, int fd, t_game *game);
 void		ft_clear(char **map);
+int			ft_map_size_check(t_game *game);
 
 void		keyboard_hook_count(mlx_key_data_t key_enter, void *game);
 void		ft_mlx_set(mlx_t *mlx);

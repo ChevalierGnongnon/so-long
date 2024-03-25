@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/25 15:43:15 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:54:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int	main(int argc, char **argv)
 		{
 			game.fd = open(argv[1], O_RDONLY);
 			game.map = ft_setting(c1, game.fd, &game);
+			if (!ft_map_size_check(&game))
+			{
+				ft_putstr_fd("Error : map too big", 2);
+				return(EXIT_FAILURE);
+			}
 			game.mlx = mlx_init(300, 300, "so long", true);
 			if (!game.map)
 				return (EXIT_FAILURE);
