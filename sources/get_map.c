@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 14:25:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:38:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_clear(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (map && map[i])
 	{
 		free(map[i]);
 		i++;

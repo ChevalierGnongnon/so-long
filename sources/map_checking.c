@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 13:32:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:35:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_midlines(char *line)
 	size = 0;
 	while (line[size] != '\n')
 		size++;
-	if (line[0] != '1' && line[size - 3] != '1')
+	if (line[0] != '1' && line[size - 1] != '1')
 		return (0);
 	return (1);
 }

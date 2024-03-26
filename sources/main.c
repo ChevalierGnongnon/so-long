@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 21:37:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:04:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**ft_setting(t_elements cnt1, int fd, t_game *game)
 		return (ft_putstr_fd("wrong fd", 2), NULL);
 	map = ft_stock_map(fd);
 	if (!map)
-		return(ft_putstr_fd("map have holes", 2), NULL);
+		return (ft_putstr_fd("map have holes", 2), NULL);
 	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
 		return (ft_putstr_fd("wrong shape or forbidden char", 2), NULL);
 	cnt1 = ft_set_struct(map);
@@ -112,6 +112,7 @@ int	main(int argc, char **argv)
 			mlx_key_hook(game.mlx, &keyboard_hook_count, &game);
 			mlx_loop(game.mlx);
 			clean_graphics(game.mlx, game.graphics);
+			mlx_terminate(game.mlx);
 			close(game.fd);
 			ft_clear(game.map);
 			return (EXIT_SUCCESS);
