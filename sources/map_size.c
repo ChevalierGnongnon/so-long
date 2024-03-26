@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:53:00 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 13:26:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:09:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_map_size_check(t_game *game)
 		x++;
 	while (game->map[y])
 		y++;
+	if (x > 100 || y > 100)
+		return (0);
 	area = x * y;
 	if (area > 4000)
 		return (0);
