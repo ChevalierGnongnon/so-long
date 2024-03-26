@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/25 17:04:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:37:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	ft_compare(t_elements cnt, t_elements cnt2)
 {
 	if (cnt.collectibles != cnt2.collectibles || cnt.start != cnt2.start
 		|| cnt.exit != cnt2.exit)
-	{
-		ft_putstr_fd("Error :\n Impossible to access all items on map", 2);
 		return (0);
-	}
 	return (1);
 }
 
@@ -68,6 +65,8 @@ char	**ft_setting(t_elements cnt1, int fd, t_game *game)
 	if (fd < 1)
 		return (ft_putstr_fd("wrong fd", 2), NULL);
 	map = ft_stock_map(fd);
+	if (!map)
+		return(ft_putstr_fd("map have holes", 2), NULL);
 	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
 		return (ft_putstr_fd("wrong shape or forbidden char", 2), NULL);
 	cnt1 = ft_set_struct(map);
@@ -77,6 +76,7 @@ char	**ft_setting(t_elements cnt1, int fd, t_game *game)
 	cnt2 = ft_set_cnt();
 	flooded_map = ft_mapcopy(map);
 	ft_start_flood(flooded_map, &cnt2);
+	ft_clear(flooded_map);
 	if (!ft_compare(cnt1, cnt2))
 		return (ft_putstr_fd("Error :\ncan't reach all elements", 2), NULL);
 	return (map);
@@ -94,10 +94,12 @@ int	main(int argc, char **argv)
 		{
 			game.fd = open(argv[1], O_RDONLY);
 			game.map = ft_setting(c1, game.fd, &game);
+			if (!game.map)
+				return (EXIT_FAILURE);
 			if (!ft_map_size_check(&game))
 			{
 				ft_putstr_fd("Error : map too big", 2);
-				return(EXIT_FAILURE);
+				return (EXIT_FAILURE);
 			}
 			game.mlx = mlx_init((game.s_x * 32) + 1, (game.s_y * 32) + 1, "test", true);
 			if (!game.map)
@@ -111,6 +113,7 @@ int	main(int argc, char **argv)
 			mlx_loop(game.mlx);
 			clean_graphics(game.mlx, game.graphics);
 			close(game.fd);
+			ft_clear(game.map);
 			return (EXIT_SUCCESS);
 		}
 	}

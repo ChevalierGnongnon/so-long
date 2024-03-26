@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:58:06 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/02/29 11:29:02 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:32:34 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	ft_check_bordlines(char *line)
 	while (line[i] != '\n' && line[i])
 	{
 		if (line[i] != '1')
-		{
-			ft_putstr_fd("Error :\n Map borders have holes", 2);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -37,10 +34,7 @@ int	ft_check_midlines(char *line)
 	while (line[size] != '\n')
 		size++;
 	if (line[0] != '1' && line[size - 3] != '1')
-	{
-		ft_putstr_fd("Error :\n Map borders have holes", 2);
 		return (0);
-	}
 	return (1);
 }
 

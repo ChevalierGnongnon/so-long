@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:08:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/25 15:40:50 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:30:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	isaccessible(t_elements *count2, char element)
 	if (element == '1' || element == '2')
 		return (0);
 	else if (element == 'E')
+	{
 		count2->exit++;
+		return (0);
+	}
 	else if (element == 'C')
 		count2->collectibles++;
 	else if (element == 'P')
@@ -41,6 +44,8 @@ void	ft_flood(char **map, t_pos pos, t_elements *count2)
 		pos.y -= 2;
 		ft_flood(map, pos, count2);
 	}
+	else if (map[pos.x][pos.y] == 'E')
+		map[pos.x][pos.y] = '1';
 }
 
 void	ft_start_flood(char **map, t_elements *count2)
