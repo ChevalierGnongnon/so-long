@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 22:04:02 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:01:12 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_check_extension(char *f)
 			&& f[sze - 3] == 'b' && f[sze - 4] == '.'))
 		return (1);
 	else
-		ft_putstr_fd("Error :\n Wrong extension, please use .ber files", 2);
+		ft_putstr_fd("Error\nWrong extension, please use .ber files", 2);
 	return (0);
 }
 
@@ -56,30 +56,23 @@ void	find_player(t_game *game)
 	}
 }
 
-char	**ft_setting(t_elements cnt1, int fd, t_game *game)
+static
+int	launch(t_game *game)
 {
-	char		**map;
-	char		**flooded_map;
-	t_elements	cnt2;
-
-	if (fd < 1)
-		return (ft_putstr_fd("wrong fd", 2), NULL);
-	map = ft_stock_map(fd);
-	if (!map)
-		return (ft_putstr_fd("map have holes", 2), NULL);
-	if (!ft_check_shape(map) || !ft_check_forbidden_char(map))
-		return (ft_putstr_fd("wrong shape or forbidden char", 2), NULL);
-	cnt1 = ft_set_struct(map);
-	game->collectibles = cnt1.collectibles;
-	if (!ft_check_elements(cnt1))
-		return (ft_putstr_fd("no enough elements", 2), NULL);
-	cnt2 = ft_set_cnt();
-	flooded_map = ft_mapcopy(map);
-	ft_start_flood(flooded_map, &cnt2);
-	ft_clear(flooded_map);
-	if (!ft_compare(cnt1, cnt2))
-		return (ft_putstr_fd("Error :\ncan't reach all elements", 2), NULL);
-	return (map);
+	game->mlx = mlx_init((game->s_x * 32) + 1, \
+		(game->s_y * 32) + 1, "test", true);
+	find_player(game);
+	if (!game->mlx)
+		return (EXIT_FAILURE);
+	game->graphics.ground = NULL;
+	ft_graphics_set(game);
+	mlx_key_hook(game->mlx, &keyboard_hook_count, game);
+	mlx_loop(game->mlx);
+	clean_graphics(game->mlx, game->graphics);
+	mlx_terminate(game->mlx);
+	close(game->fd);
+	ft_clear(game->map);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
@@ -98,24 +91,12 @@ int	main(int argc, char **argv)
 				return (EXIT_FAILURE);
 			if (!ft_map_size_check(&game))
 			{
-				ft_putstr_fd("Error : map too big", 2);
+				ft_putstr_fd("Error\nmap too big", 2);
 				return (EXIT_FAILURE);
 			}
-			game.mlx = mlx_init((game.s_x * 32) + 1, (game.s_y * 32) + 1, "test", true);
 			if (!game.map)
 				return (EXIT_FAILURE);
-			find_player(&game);
-			if (!game.mlx)
-				exit(EXIT_FAILURE);
-			game.graphics.ground = NULL;
-			ft_graphics_set(&game);
-			mlx_key_hook(game.mlx, &keyboard_hook_count, &game);
-			mlx_loop(game.mlx);
-			clean_graphics(game.mlx, game.graphics);
-			mlx_terminate(game.mlx);
-			close(game.fd);
-			ft_clear(game.map);
-			return (EXIT_SUCCESS);
+			return (launch(&game));
 		}
 	}
 }

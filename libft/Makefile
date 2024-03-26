@@ -57,6 +57,8 @@ CC = cc
 
 OBJSLIBFT = $(LIBFT:.c=.o)
 
+CFLAGS = -Werror -Wextra -Wall
+
 NAME = libft.a
 
 all : $(NAME)
