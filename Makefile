@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 13:28:39 by chhoflac          #+#    #+#              #
-#    Updated: 2024/03/26 22:50:11 by chhoflac         ###   ########.fr        #
+#    Updated: 2024/03/27 14:30:20 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SCRS = sources/flood_fill.c \
 		sources/map_checking.c \
 		sources/set_graphics.c \
 		sources/move.c \
-		sources/character.c \
 		sources/map_copy.c \
 		sources/map_size.c \
 		sources/settings.c
@@ -41,7 +40,7 @@ EXEC = a.out
 all : $(NAME)
 
 $(NAME) : $(OBJS_SO_LONG) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) -ldl -lglfw -pthread -lm  $(OBJS_SO_LONG) $(LIBFT) $(MLX) -o $(NAME) 
+	$(CC) $(CFLAGS) -ldl -lglfw -pthread -lm  $(OBJS_SO_LONG) $(LIBFT) $(MLX) -o $(NAME) -fsanitize=address
 	
 $(LIBFT) :
 	$(MAKE) -C libft

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:27:54 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/20 10:17:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:48:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,17 @@ mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics)
 {
 	mlx_texture_t	*texture;
 
-	ft_character_stock(mlx, graphics);
+	texture = mlx_load_png("images/pld_1.png");
+	graphics->sup[0] = mlx_texture_to_image(mlx, texture);
+	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/chest.png");
-	graphics->sup[4] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[1] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/stump.png");
-	graphics->sup[5] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[2] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("images/flower.png");
-	graphics->sup[6] = mlx_texture_to_image(mlx, texture);
+	graphics->sup[3] = mlx_texture_to_image(mlx, texture);
 	mlx_delete_texture(texture);
 	return (graphics->sup);
 }
@@ -59,13 +61,13 @@ mlx_image_t	**ft_img_stock(mlx_t *mlx, t_graphics *graphics)
 void	ft_select(char c, mlx_t *mlx, mlx_image_t **stock, t_pos pos)
 {
 	if (c == '1')
-		mlx_image_to_window(mlx, stock[5], pos.x * 32, pos.y * 32);
+		mlx_image_to_window(mlx, stock[2], pos.x * 32, pos.y * 32);
 	else if (c == 'P')
 		mlx_image_to_window(mlx, stock[0], pos.x * 32, pos.y * 32);
 	else if (c == 'C')
-		mlx_image_to_window(mlx, stock[6], pos.x * 32, pos.y * 32);
+		mlx_image_to_window(mlx, stock[3], pos.x * 32, pos.y * 32);
 	else if (c == 'E')
-		mlx_image_to_window(mlx, stock[4], pos.x * 32, pos.y * 32);
+		mlx_image_to_window(mlx, stock[1], pos.x * 32, pos.y * 32);
 }
 
 void	ft_clean_img(mlx_t *mlx, mlx_image_t **stock)
