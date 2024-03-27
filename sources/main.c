@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/27 15:10:48 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:10:20 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ int	launch(t_game *game)
 		(game->s_y * 32) + 1, "test", true);
 	find_player(game);
 	if (!game->mlx)
+	{
+		ft_clear(game->map);
+		clean_graphics(game->mlx, game->graphics);
 		return (EXIT_FAILURE);
+	}
 	game->graphics.ground = NULL;
 	ft_graphics_set(game);
 	mlx_key_hook(game->mlx, &keyboard_hook_count, game);

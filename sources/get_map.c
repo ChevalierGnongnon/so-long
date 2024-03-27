@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:35:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 22:38:17 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:19:48 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_stock_map(int fd)
 	while (line)
 	{
 		if (!ft_check_line(line))
-			return (ft_clear(map), NULL);
+			return (ft_clear(map), free(line), NULL);
 		map = ft_realloc(map, line);
 		if (!map)
 			return (ft_clear(map), NULL);
