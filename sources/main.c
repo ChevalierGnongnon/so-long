@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:47:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/03/26 23:01:12 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:10:48 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,10 @@ int	main(int argc, char **argv)
 				return (EXIT_FAILURE);
 			if (!ft_map_size_check(&game))
 			{
+				ft_clear(game.map);
 				ft_putstr_fd("Error\nmap too big", 2);
 				return (EXIT_FAILURE);
 			}
-			if (!game.map)
-				return (EXIT_FAILURE);
 			return (launch(&game));
 		}
 	}
